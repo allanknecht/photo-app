@@ -1,0 +1,23 @@
+<%- model_class = Image -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <% if @image.picture? %>
+      <p style="margin-bottom: 1em;"><%= image_tag @image.picture.url, style: "max-width: 100%; height: auto; max-height: 500px;", alt: @image.name %></p>
+    <% end %>
+
+    <p><strong><%= model_class.human_attribute_name(:name) %>:</strong> <%= @image.name %></p>
+
+    <p style="margin-top: 1.5em;">
+      <%= link_to t('.back', :default => t("helpers.links.back")), images_path, :class => 'btn btn-default' %>
+      <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_image_path(@image), :class => 'btn btn-default' %>
+      <%= link_to t('.destroy', :default => t("helpers.links.destroy")), image_path(@image),
+          :method => :delete,
+          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+          :class => 'btn btn-danger' %>
+    </p>
+  </div>
+</div>

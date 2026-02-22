@@ -2,7 +2,9 @@
   Stripe.setPublishableKey("<%= Rails.configuration.stripe[:publishable_key] %>");
 </script>
 
-<h1><%= t('.sign_up') %></h1>
+<div class="page-header">
+  <h1><%= t('.sign_up') %></h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { role: 'form', class: 'cc-form' }) do |f| %>
   <%= bootstrap_devise_error_messages! %>
@@ -26,6 +28,9 @@
     <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
   </div>
 
+  <div class="alert alert-info small">
+    <strong>Test:</strong> use card <code>4242 4242 4242 4242</code>, any CVV and future expiry. See <%= link_to 'Home', root_path %> for more.
+  </div>
   <%= fields_for :payment do |p| %>
     <div class="row col-md-12">
       <div class="form-group col-md-4 no-left-padding">

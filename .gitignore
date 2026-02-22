@@ -21,3 +21,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Uploaded files (CarrierWave)
+/public/uploads

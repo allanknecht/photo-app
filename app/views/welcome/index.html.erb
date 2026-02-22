@@ -1,47 +1,75 @@
-<% if current_user %>
-  <h3>Welcome: <%= current_user.email %></h3>
-<% else %>
-  <div class="jumbotron">
-    <h2>Welcome to the Photo Management App!</h2>
-    <p class="lead">
-      You'll love managing your Photos with our application. Sign up!
-    </p>
-  </div>
+<div class="page-header">
+  <h1>Photo App <small>study project</small></h1>
+</div>
 
+<% if current_user %>
+  <div class="well well-sm">
+    <strong>Hello, <%= current_user.email %></strong>
+  </div>
   <div class="row">
-    <div class="plans clearfix">
-      <div class="col-lg-3 col-lg-offset-3 plan">
-        <h2>Premium Plan</h2>
-        <div class="price pull-right">
-          Price: $10
+    <div class="col-md-12">
+      <h3>Quick access</h3>
+      <p>
+        <%= link_to 'View and manage photos', images_path, class: 'btn btn-primary' %>
+      </p>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-8">
+      <h3>What's in this project</h3>
+      <p class="text-muted">Summary of what was implemented for study, with links to try it out.</p>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Photos (CarrierWave upload)</h4>
         </div>
-        <div class="features">
-          <ul>
-            <li>Unlimited Image Uploads</li>
-            <li>Responsive design</li>
-            <li>Access anywhere</li>
-          </ul>
+        <div class="panel-body">
+          <p>Image CRUD: create, list, edit, and delete. Upload with resize (up to 800×800). Accepts jpg, jpeg, gif, png (max 5MB).</p>
+          <p><%= link_to 'Sign in and access photos', new_user_session_path, class: 'btn btn-default btn-sm' %> (you must be logged in)</p>
         </div>
-        <p>
-          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
-        </p>
       </div>
-      <div class="col-lg-3 plan">
-        <h2>Amaze Plan</h2>
-        <div class="price pull-right">
-          Price: $20
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">Payment (Stripe)</h4>
         </div>
-        <div class="features">
-          <ul>
-            <li>Unlimited Image Uploads</li>
-            <li>Responsive design</li>
-            <li>Access anywhere</li>
-            <li class='extra'>Unlimited projects</li>
+        <div class="panel-body">
+          <p>User signup with card: when you register, payment is processed via Stripe (one-time $10 charge on test card).</p>
+          <p><%= link_to 'Sign up and test payment', new_user_registration_path, class: 'btn btn-primary btn-sm' %></p>
+        </div>
+      </div>
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4 class="panel-title">Stripe test card</h4>
+        </div>
+        <div class="panel-body">
+          <p>Use these details on the sign-up form to simulate payment (test mode):</p>
+          <ul class="list-unstyled">
+            <li><strong>Number:</strong> <code>4242 4242 4242 4242</code></li>
+            <li><strong>CVV:</strong> any 3 digits (e.g. 123)</li>
+            <li><strong>Expiry:</strong> any future date</li>
           </ul>
+          <p class="text-muted small">Keys in <code>.env</code>: <code>STRIPE_PUBLISHABLE_KEY</code> and <code>STRIPE_SECRET_KEY</code> (see <code>.env.example</code>).</p>
         </div>
-        <p>
-          <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-primary sign-up' %>
-        </p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="panel panel-default plan-card">
+        <div class="panel-heading">
+          <h3 class="panel-title">Premium Plan</h3>
+          <span class="price">$10</span>
+        </div>
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            <li>Unlimited image uploads</li>
+            <li>Access from any device</li>
+          </ul>
+          <p><%= link_to 'Subscribe and sign up', new_user_registration_path, class: 'btn btn-primary btn-block' %></p>
+          <p class="text-center small"><%= link_to 'Already have an account', new_user_session_path %></p>
+        </div>
       </div>
     </div>
   </div>

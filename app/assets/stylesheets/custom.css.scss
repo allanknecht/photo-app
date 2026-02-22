@@ -92,3 +92,31 @@
   list-style: none;
   padding-left: 0;
 }
+
+// Home / welcome
+.page-header {
+  margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.plan-card {
+  .panel-heading {
+    position: relative;
+    .price {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #337ab7;
+    }
+  }
+}
+
+.footer-muted {
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
