@@ -31,6 +31,11 @@
   <div class="alert alert-info small">
     <strong>Test:</strong> use card <code>4242 4242 4242 4242</code>, any CVV and future expiry. See <%= link_to 'Home', root_path %> for more.
   </div>
+  <% if Rails.env.development? %>
+    <div class="alert alert-warning small">
+      <strong>Development:</strong> emails sent by the app are not delivered. Open <%= link_to '/letter_opener', '/letter_opener', target: '_blank' %> to see their content.
+    </div>
+  <% end %>
   <%= fields_for :payment do |p| %>
     <div class="row col-md-12">
       <div class="form-group col-md-4 no-left-padding">
